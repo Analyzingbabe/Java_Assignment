@@ -1,0 +1,377 @@
+
+					Question and answer
+
+Question 1:    Is JVM platform independent? is Java platform independent?
+
+ 	Yes, Java is platform-independent but JVM is platform dependent.
+
+JVM;-
+In Java, the main point here is that the JVM depends on the operating system – so if you are running Mac OS X you will have a different JVM than if you are running Windows or some other operating system. This fact can be verified by trying to download the JVM for your particular machine – when trying to download it, you will be given a list of JVMs corresponding to different operating systems, and you will obviously pick whichever JVM is targeted for the operating system that you are running. 
+JAVA:-
+In the case of Java, it is the magic of Bytecode that makes it platform independent.
+
+•	This adds to an important feature in the JAVA language termed as portability. Every system has its own JVM which gets installed automatically when the jdk software is installed. For every operating system separate JVM is available which is capable to read the .class file or byte code.
+
+
+
+Question:  What are the scenarios to select instance variable, static variable and local variable?
+
+Variable:-
+Variable is a memory location name of the data.
+
+•	The value stored in a variable can be changed during program execution.
+•	A variable is only a name given to a memory location, all the operations done on the variable effects that memory location.
+•	In Java, all the variables must be declared before use.
+
+Ex: Int data_name
+
+1. Datatype: Type of data that can be stored in this variable. 
+2. Data name: Name was given to the variable. 
+In this way, a name can only be given to a memory location. It can be assigned values in two ways: 
+•	Variable Initialization.     Ex Int A=10;
+•	Assigning value by taking input.    Int a=2,b=2; int c; c=a+2;
+
+
+Types of Variables in Java
+1.	Local Variables
+2.	Instance Variables
+3.	Static Variables
+4.	
+
+
+Local Variables
+	Instance Variables
+	Static Variables
+
+1.A variable defined within a block or method or constructor is called a local variable. 
+	Instance variables are non-static variables and are declared in a class outside any method, constructor, or block. 
+	Static variables are also known as Class variables
+
+2. Ex
+int var = 10; // Declared a Local Variable
+        
+   System.out.println("Local Variable: " + var);
+Output:
+Local Variable 10
+	Ex
+public String geek; // Declared Instance Variable
+ 
+    public GFG()
+    { // Default Constructor
+ 
+
+ { this.geek = "Jain"; // initializing Instance Variable}
+//Main Method
+    public static void main(String[] args)
+    {
+        // Object Creation
+        GFG name = new GFG();
+        // Displaying O/P
+        System.out.println("Geek name is: " + name.geek);
+    }
+}
+Output:
+Geek name is: Jain
+	Ex
+class GFG {
+  public static String geek = "Jain";         //Declared static variable
+   
+    public static void main (String[] args) {
+        
+      //geek variable can be accessed with object creation
+      //Displaying O/P
+      //GFG.geek --> using the static variable
+        System.out.println("Geek Name is : "+GFG.geek);
+    }
+}
+Output:
+Geek name is: Jain
+
+
+
+
+Question 3: What’s the difference between literal approach and new keyword approach of String object creation?
+			
+
+String creation using new()	String creation using String literal
+If we create a String using new(), then a new object is created in the heap memory even if that value is already present in the heap memory.	If we create a String using String literal and its value already exists in the string pool, then that String variable also points to that same value in the String pool without the creation of a new String with that value.
+It takes more time for the execution and thus has lower performance than using String literal.	It takes less time for the execution and thus has better performance than using new().
+Example:
+String n1= new String(“Java”);
+String n2= new String(“Java”);
+String n3= new String(“Create”);	Example:
+String s1=”Java”;
+String s2=”Java”;
+String s3=”Create”;
+
+
+                 Stack	 String constant  Memory(SCM)
+                   s1	1000-String object(Java)
+                  s2	1000-String object(Java)
+                  s3	1001-String object(Create)
+
+                Stack	       Heap memory
+                 n1	3000-string object(Java)
+                 n2	3001-string object(Java)
+                 n3	3002-string object(Create)
+
+
+
+
+
+Programs:-
+{
+    public static void main(String[] args)
+    {
+        String s1="Java";
+        String s2="Java";
+        String s3="Create";
+
+        String n1= new String("Java");
+        String n2= new String("Java");
+        String n3= new String("Create");
+
+        System.out.println(s1==s2);
+        System.out.println(n1==n2);
+        System.out.println(s3==n3);
+    }
+}
+
+Output:-
+true
+false
+false
+
+Question4:  Whats difference between == operator and equals() ?
+
+equals()	==
+1. It is a method	It is a operator
+2.Content comparision	Address & Content comparision
+3.It compares two content if it is same, it returns true.	It compares two operands and memory location if both same then it returns true.
+4.Overriding is allowed	Overriding not allowed
+
+Program:-
+
+public class Test {
+    public static void main(String[] args)
+    {
+        String s1 = "HELLO";
+        String s2 = "HELLO";
+        String s3 =  new String("HELLO");
+ 
+        System.out.println(s1 == s2); // true
+        System.out.println(s1 == s3); // false
+        System.out.println(s1.equals(s2)); // true
+        System.out.println(s1.equals(s3)); // true
+    }
+}
+
+
+Output:-
+true.   //checks address and content
+false.  // checks address and content
+true. //check only content
+true.   //checks only content
+
+
+
+Question5:  Is String mutable?
+
+
+String is an example of an immutable type. A String object always represents the same string. StringBuilder is an example of a mutable type. It has methods to delete parts of the string, insert or replace characters, etc.
+
+Since String is immutable, once created, a String object always has the same value. To add something to the end of a String, you have to create a new String object:
+Example:-
+String s = "a";
+s = s.concat("b"); // s+="b" and s=s+"b" also mean the same thing
+
+
+Question6: What's the difference among String, StringBuffer and StringBuilder?
+
+	String class objects are immutable whereas StringBuffer and StringBuilder objects are mutable.
+	StringBuffer is synchronized while StringBuilder is not synchronized.
+	Concatenation operator "+" is internal implemented using either StringBuffer or StringBuilder.
+
+	#Criteria to choose among String, StringBuffer and StringBuilder
+
+	If the Object value is not going to change use String Class because a String object is immutable.
+	If the Object value can change and will only be accessed from a single thread, use a StringBuilder because StringBuilder is unsynchronized.
+	In case the Object value can change, and will be modified by multiple threads, use a StringBuffer because StringBuffer is synchronized.
+	
+	
+Question7:	what is the use of this and super keywords? 
+
+this: this is the reserved keyword in Java that is used to invoke constructor, methods, static members of the current class.
+
+super: super is the reserved keyword in Java that is used to invoke constructor, methods of the parent class. 
+
+Question8:	What is the order of constructor execution in inheritance? 
+	
+	Order of execution of constructors in inheritance relationship is from base /parent class to derived / child class. 
+	
+Question9:	what is use of this() and super()? 
+
+	super() as well as this() both are used to make constructor calls. 
+	super() is used to call Base class's constructor(i.e, Parent's class)
+    this() is used to call current class's constructor.
+    
+Question10:	Briefly describe polymorphism? 
+
+	In Java, polymorphism refers to the ability of a class to provide different implementations of a method, depending on the type of object that is passed to the method. 
+	To put it simply, polymorphism in Java allows us to perform the same action in many different ways.
+	Ex: int add();
+		add(int a,int b);
+		
+Question11:	what is encapsulation. Give an example? 
+	
+	It binds the mechanism together as a protective shield that will prevent the classes or clients to access the internal data. 
+	In a real-life scenario, a car a power steering machine has a complex system that enables the car movement. 
+	This system is tightly coupled and works synchronously, but the complexity is entirely hidden from the car user. 
+	The drive can only use this system through an interface. 
+	Also, the internal functions are completely independent of on-another and thus do not affect other mechanisms unless needed.
+	
+	Ex: mobile app
+	user can view only .exe files they cannot actual methods and functions.
+	
+Question12:  Scenarios to select  interface, abstract class and concrete classes? 
+
+	    Abstraction is one of the Object-Oriented programming key features. 
+	    It allows us to hide the implementation complexities just by providing functionalities via simpler interfaces. 
+	    In Java, we achieve abstraction by using either an interface or an abstract class.
+
+		First, let's look at the differences between a normal concrete class vs. an interface.
+
+			A class is a user-defined type that acts as a blueprint for object creation. 
+				It can have properties and methods that represent the states and behaviors of an object, respectively.
+			An interface is also a user-defined type that is syntactically similar to a class.
+ 				It can have a collection of field constants and method signatures that will be overridden by interface implementing classes.
+	In addition to these, Java 8 new features support static and default methods in interfaces to support backward compatibility. Methods in an interface are implicitly abstract if they are not static or default and all are public.
+However, starting with Java 9, we can also add private methods in interfaces.
+		
+		Interface vs. Abstract Class
+An abstract class is nothing but a class that is declared using the abstract keyword. 
+It also allows us to declare method signatures using the abstract keyword (abstract method) and forces its subclasses to implement all the declared methods. 
+Suppose if a class has a method that is abstract, then the class itself must be abstract.
+
+Abstract classes have no restrictions on field and method modifiers, while in an interface, all are public by default. 
+We can have instance and static initialization blocks in an abstract class, whereas we can never have them in thenterface.
+ Abstract classes may also have constructors which will get executed during the child object's instantiation.
+
+Java 8 introduced functional interfaces, an interface with a restriction of no more than one declared abstract method.
+ Any interface with a single abstract method other than static and default methods is considered a functional interface. 
+ We can use this feature to restrict the number of abstract methods to be declared. 
+While in abstract classes, we can never have this restriction on the number of abstract methods declaration.
+
+Abstract classes are analogous to interfaces in some ways:
+
+We can't instantiate either of them. i.e., we cannot use the statement new TypeName() directly to instantiate an object. If we used the aforementioned statement, we have to override all the methods using an anonymous class
+They both might contain a set of methods declared and defined with or without their implementation. i.e., static & default methods(defined) in an interface, instance methods(defined) in abstract class, abstract methods(declared) in both of them
+Let's look at some scenarios when one should go with an interface:
+
+If the problem needs to be solved using multiple inheritances and is composed of different class hierarchies
+When unrelated classes implement our interface. For example, Comparable provides the compareTo() method that can be overridden to compare two objects
+When application functionalities have to be defined as a contract, but not concerned about who implements the behavior. i.e., third-party vendors need to implement it fully
+Consider using the interface when our problem makes the statement “A is capable of [doing this]”. For example, “Clonable is capable of cloning an object”, “Drawable is capable of drawing a shape”, etc.
+
+Let us consider an example that makes use of an interface:
+public interface Sender {
+    void send(File fileToBeSent);
+}
+public class ImageSender implements Sender {
+    @Override
+    public void send(File fileToBeSent) {
+        // image sending implementation code.
+    }
+}
+Here, Sender is an interface with a method send(). Hence, “Sender is capable of sending a file” we implemented it as an interface.
+ ImageSender implements the interface for sending an image to the target. 
+We can further use the above interface to implement VideoSender, DocumentSender to accomplish various jobs.
+
+
+Consider a unit test case the makes use of the above interface and its implemented class:
+@Test
+void givenImageUploaded_whenButtonClicked_thenSendImage() { 
+ 
+    File imageFile = new File(IMAGE_FILE_PATH);
+ 
+    Sender sender = new ImageSender();
+    sender.send(imageFile);
+}
+When to Use an Abstract Class
+Now, let's see some scenarios when one should use the abstract class:
+
+When trying to use the inheritance concept in code (share code among many related classes), by providing common base class methods that the subclasses override
+If we have specified requirements and only partial implementation details
+While classes that extend abstract classes have several common fields or methods (that require non-public modifiers)
+If one wants to have non-final or non-static methods to modify the states of an object
+Consider using abstract classes and inheritance when our problem makes the evidence “A is a B”. For example, “Dog is an Animal”, “Lamborghini is a Car”, etc.
+
+Let's look at an example that uses the abstract class:
+
+public abstract class Vehicle {
+    
+    protected abstract void start();
+    protected abstract void stop();
+    protected abstract void drive();
+    protected abstract void changeGear();
+    protected abstract void reverse();
+    
+    // standard getters and setters
+}
+public class Car extends Vehicle {
+
+    @Override
+    protected void start() {
+        // code implementation details on starting a car.
+    }
+
+    @Override
+    protected void stop() {
+        // code implementation details on stopping a car.
+    }
+
+    @Override
+    protected void drive() {
+        // code implementation details on start driving a car.
+    }
+
+    @Override
+    protected void changeGear() {
+        // code implementation details on changing the car gear.
+    }
+
+    @Override
+    protected void reverse() {
+        // code implementation details on reverse driving a car.
+    }
+}
+In the above code, the Vehicle class has been defined as abstract along with other abstract methods. It provides generic operations of any real-world vehicle and also has several common functionalities. The Car class, which extends the Vehicle class, overrides all the methods by providing the car's implementation details (“Car is a Vehicle”).
+
+Hence, we defined the Vehicle class as abstract in which the functionalities can be implemented by any individual real vehicle like cars and buses. For example, in the real world, starting a car and bus is never going to be the same (each of them needs different implementation details).
+
+Now, let's consider a simple unit test that makes use of the above code:
+@Test
+void givenVehicle_whenNeedToDrive_thenStart() {
+
+    Vehicle car = new Car("BMW");
+
+    car.start();
+    car.drive();
+    car.changeGear();
+    car.stop();
+}
+Abstract class:
+An abstract class is declared using abstract modifier.
+An abstract class can be instantiated either by a concrete subclass or by defining all the abstract method along with the new statement.					 
+Instantiation: An abstract class cannot be instantiated directly, i.e. object of such class cannot be created directly using new keyword. 
+An abstract class may or may not contain abstract methods.
+An abstract class cannot be declared as final.
+concrete class:
+Concrete class should not be declared using abstract keyword.
+ A concrete class can be instantiated directly, using a new keyword. 
+ Invalid direct instantiation of an abstract class.
+A concrete class is not declared using abstract modifier.
+An abstract class cannot be directly instantiated using the new keyword.	
+A concrete class can be directly instantiated using the new keyword.
+A concrete class cannot contain an abstract method.
+A concrete class can be declared as final.
