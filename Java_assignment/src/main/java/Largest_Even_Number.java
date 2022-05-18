@@ -76,13 +76,15 @@ public class Largest_Even_Number {
 				{
 					String str1=new String("d%#2373#@");
 				String str = str1.replaceAll("[a-zA-Z%#@]", "");
-				System.out.println(str);
+				System.out.println("Eliminating charecters and special charecters :"+str);
 				
 					
 					int len = str.length();
 
 					// Function call
+					System.out.println("Largest even number ");
 					System.out.println(getMaxEven(str, len));
+					//Eliminate the duplicate eliminate in the string
 					char[] chars = str.toCharArray();
 					Set<Character> charSet = new LinkedHashSet<Character>();
 					for (char c : chars) {
@@ -94,16 +96,15 @@ public class Largest_Even_Number {
 					for (Character character : charSet) {
 					    sb.append(character);
 					}
-					System.out.println(sb.toString());
-				
-				
+					
+					System.out.println("Eliminate the duplicate element from the string: "+sb.toString());
 					
 					 
 			        // conversion from String object to StringBuffer
 			        
 			        // To reverse the string
 			        sb.reverse();
-			        System.out.println(sb);
+			        System.out.println("Largest even number from the given string: "+sb);
 					 
 			        
 					
