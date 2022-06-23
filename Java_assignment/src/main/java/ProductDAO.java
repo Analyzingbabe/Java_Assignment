@@ -237,7 +237,7 @@ public class ProductDAO implements IProductDAO {
 		// TODO Auto-generated method stub
 		Connection connection = DButil.getDBConnection(); 
 		try {Statement statement = connection.createStatement();
-		String query = "Select * from Shoping_Point ORDER BY Pro_price ASC";
+		String query = "Select * from Shoping_Point ORDER BY Pro_price DESC";
 		ResultSet rs = statement.executeQuery(query); 
         System.out.println("Id    Name    Price		count");
         while (rs.next()) {
